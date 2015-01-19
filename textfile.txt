@@ -1,0 +1,9 @@
+I primarily used the Udacity lessons and the linked websites they course provided. 
+
+I also used information from the following websites:
+
+https://developer.mozilla.org
+api.jquery.com
+http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/
+http://jsonlint.com/
+http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/
