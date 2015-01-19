@@ -1,22 +1,21 @@
+
+//Personal information
 var bio = {
 	"name" : "Matt Cox",
-	"role" : "Lawyer, Web-Developer, Student of the Brain",
-	"contact" : {
+	"role" : "Lawyer, Web-Developer, Brain Geek",
+	"contacts" : {
 		"email" : "cox.matthew.765@gmail.com",
 		"mobile" : "(765) 702-7627",
 		"twitter" : "@mattstweetself",
 		"github" : "coxmatthew",
 		"location" : "Orange, CA"
 	},
-	"welcomeMessage" : "Hello there",
-	"skills" : ["Legal Analysis", "Web Development", "Problem Sovling"],
-	"biopic" : "images/fry.jpg",
+	"welcomeMessage" : "There is so much to do, so much to see, so much pee",
+	"skills" : ["Legal Analysis of some really cool stuff", "Web Development of really cool stuff", "Problem Sovling of really cool stuff"],
+	"biopic" : "images/profile.png",
 }
 
-
 bio.display = function() {
-	
-	
 
 	var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
 	$('#header').prepend(formattedRole);
@@ -24,17 +23,17 @@ bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	$('#header').prepend(formattedName);
 
-	var formattedEmail = HTMLemail.replace('%data%', bio.contact.email);
+	var formattedEmail = HTMLemail.replace('%data%', bio.contacts.email);
 	$('#topContacts').prepend(formattedEmail);
 
-	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact.twitter);
-	$('#topContacts').append(formattedTwitter);
-
-	var formattedMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	$('#topContacts').append(formattedMobile);
 
-	var formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 	$('#topContacts').append(formattedLocation);
+
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	$('#topContacts').append(formattedTwitter);
 
 	var formattedPic = HTMLbioPic.replace('%data%', bio.biopic);
 	$('#header').append(formattedPic);
@@ -52,6 +51,74 @@ bio.display = function() {
 
 bio.display();
 
+
+
+
+
+//Work Information
+var work = {
+	"jobs" : [
+		{
+			"employer" : "Miles, Bauer, Bergstrom, and Winters, LLP",
+			"title" : "Legal Assistant",
+			"location" : "Santa Ana, CA, USA",
+			"date" : "September 2013 - September 2014",
+			"description" : "Compliance reserach, draft legal documents, contact clients, research civil issues, write for trade magazine"
+		},
+		{
+			"employer" : "Chapman University School of Law: Freidman Team",
+			"title" : "Research Assistant",
+			"location" : "Orange, CA, USA", 
+			"date" : "May 2013 - May 2014",
+			"description" : "Researched recent appllate court holdings on commercial leasing to update the Freidman on Leases Treatise"
+		}
+	],
+
+	"clinics" : [
+		{
+			"name" : "Mediation Clinic",
+			"description" : "Mediate civil matters for Riverside County Superior Court"
+		},
+		{
+			"name" : "Alona Cortese Elder Law Clinic",
+			"description" : "Assist low-income clients with end-of-life and conservatorsip matters"
+		}
+	]
+}
+
+work.display = function() {
+	for(job in work.jobs){
+		$("#workExperience").append(HTMLworkStart);  //For each job this appends the HTMLworkStart 
+		//object to the workExperience section, found in the html code
+
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer); //Notice this uses the 
+		//iterator job as the index for our variable. This means that each time the for-in loop encounters an object
+		//[job] in the work.jobs array, it will insert that object into this place holder
+
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+		$(".work-entry:last").append(formattedEmployerTitle);
+
+		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].date);
+		$(".work-entry:last").append(formattedWorkDates);
+
+		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formattedWorkLocation);
+
+		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedWorkDescription);
+		//.work-entry: last = in jQuery we are selecting every
+		//object with a class "work-entry". We know we want a class because of the dot in front. The last portion tells
+		//us that we want to append after the last element with a class work-entry.
+	};
+}
+
+work.display();
+
+
+
+
+//Education Information
 var education = {
 	"schools" : [
 		{
@@ -70,7 +137,7 @@ var education = {
 		},
 		{
 			"name" : "Fowler School of Law at Chapman University",
-			"location" : "Orange, CA",
+			"location" : "Orange, CA, US",
 			"degree" : "JD",
 			"date" : "May 2015",
 			"major" : ["Law", " Advocacy and Dispute Resolution"]
@@ -138,65 +205,10 @@ education.display = function() {
 
 education.display();
 
-var work = {
-	"jobs" : [
-		{
-			"employer" : "Miles, Bauer, Bergstrom, and Winters, LLP",
-			"title" : "Legal Assistant",
-			"location" : "Santa Ana, CA, USA",
-			"date" : "September 2013 - September 2014",
-			"description" : "Compliance reserach, draft legal documents, contact clients, research civil issues, write for trade magazine"
-		},
-		{
-			"employer" : "Chapman University School of Law: Freidman Research",
-			"title" : "Research Assistant",
-			"location" : "Orange, CA, USA", 
-			"date" : "May 2013 - May 2014",
-			"description" : "Researched recent appllate court holdings on commercial leasing to update the Freidman on Leases Treatise"
-		}
-	],
 
-	"clinics" : [
-		{
-			"name" : "Mediation Clinic",
-			"description" : "Mediate civil matters for Riverside County Superior Court"
-		},
-		{
-			"name" : "Alona Cortese Elder Law Clinic",
-			"description" : "Assist low-income clients with end-of-life and conservatorsip matters"
-		}
-	]
-}
 
-work.display = function() {
-	for(job in work.jobs){
-		$("#workExperience").append(HTMLworkStart);  //For each job this appends the HTMLworkStart 
-		//object to the workExperience section, found in the html code
 
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer); //Notice this uses the 
-		//iterator job as the index for our variable. This means that each time the for-in loop encounters an object
-		//[job] in the work.jobs array, it will insert that object into this place holder
-
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		var formattedEmployerTitle = formattedEmployer + formattedTitle;
-		$(".work-entry:last").append(formattedEmployerTitle);
-
-		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].date);
-		$(".work-entry:last").append(formattedWorkDates);
-
-		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-		$(".work-entry:last").append(formattedWorkLocation);
-
-		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-		$(".work-entry:last").append(formattedWorkDescription);
-		//.work-entry: last = in jQuery we are selecting every
-		//object with a class "work-entry". We know we want a class because of the dot in front. The last portion tells
-		//us that we want to append after the last element with a class work-entry.
-	};
-}
-
-work.display();
-
+//Project information
 var projects = {
 	"projects" : [
 		{
@@ -209,7 +221,8 @@ var projects = {
 			"title" : "Phone to Telescope Mount",
 			"date" : "January 2014",
 			"description" : "Made a mount to use phone as camera and screen to look through telescope lens",
-			"iamges" : 0
+			"images" : 0
+
 		}
 	]
 }
@@ -239,79 +252,6 @@ projects.display = function() {
 }
 
 projects.display();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-if (bio.skills > 0) {
-	$("#header").append(HTMLskillsStart);
-
-	var formattedSkills = HTMLskills.replace("%data%", bio.skills[0]);
-	$("#skills").append(formattedSkills);
-
-	var formattedSkills = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkills);
-
-	var formattedSkills = HTMLskills.replace("%data%", bio.skills[2])
-	$("#skills").append(formattedSkills);
-
-};
-
-for(var i = 0; i < 9; i++){
-	console.log(i);
-};
-*/
-
-
-
-$(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
-
-	logClicks(x,y);
-});
-
-
-function locationizer(work_obj) {
-    locsArray = [];
-    for (var job in work_obj.jobs){
-      locsArray.push(work_obj.jobs[job].location);
-    }
-    return locsArray 
-}    
-
-// Did locationizer() work? This line will tell you!
-console.log(locationizer(work));
-
-
-$("#main").append(internationalizeButton)
-
-function inName(oldName) {
-    var finalName = oldName;
-    var names = oldName.trim().split(" ");  //trim removes white space before and after the name. if there is white space the function will not sort the contents properly
-    names[1] = names[1].toUpperCase();
-    names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
-    finalName = names.join(" ");
-    return finalName;
-}
-
-
-
-
-
 
 
 $("#mapDiv").append(googleMap);
