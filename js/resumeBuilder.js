@@ -2,7 +2,7 @@
 //Personal information
 var bio = {
 	"name" : "Matt Cox",
-	"role" : "Lawyer, Web-Developer, Brain Geek",
+	"role" : "Soon-to-be Lawyer, Learning-to-be Web-Developer, and Brain Geek",
 	"contacts" : {
 		"email" : "cox.matthew.765@gmail.com",
 		"mobile" : "(765) 702-7627",
@@ -10,8 +10,8 @@ var bio = {
 		"github" : "coxmatthew",
 		"location" : "Orange, CA"
 	},
-	"welcomeMessage" : "There is so much to do, so much to see, so much pee",
-	"skills" : ["Legal Analysis of some really cool stuff", "Web Development of really cool stuff", "Problem Sovling of really cool stuff"],
+	"welcomeMessage" : "This message will catch your attention. . .",
+	"skills" : ["Problem solving from a legal perspective", "Building and sharing ideas", "Finding cool things in dirt"],
 	"biopic" : "images/profile.png",
 }
 
@@ -117,27 +117,74 @@ work.display();
 
 
 
+//Project information
+var projects = {
+	"projects" : [
+		{
+			"title" : "Web-Development Portfolio",
+			"date" 	: "January 2014",
+			"description" : "Built personal portfolio to learn web development skills",
+			"images" : ["images/webprojectphoto1.png", "images/webprojectphoto2.png", "images/webprojectphoto3.png"]
+		},
+		{
+			"title" : "Phone to Telescope Mount",
+			"date" : "January 2014",
+			"description" : "Made a telescope mount to hold phone for use as camera and screen",
+			"images" : ["images/telescopeproject1.png", "images/telescopeproject2.png", "images/telescopeproject3.png"]
+
+		}
+	]
+}
+
+projects.display = function() {
+	$("#projects").append(HTMLprojectStart); 
+	//HTMLprojectStart creates an element with the class "project-entry" so we can grab this class and append info to
+	for (project in projects.projects){
+		
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		$(".project-entry:last").append(formattedTitle);
+
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].date);
+		$(".project-entry:last").append(formattedDates);
+
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		$(".project-entry:last").append(formattedDescription);
+
+		if (projects.projects[project].images.length > 0) {
+			for (image in projects.projects[project].images) {
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+				$(".project-entry:last").append(formattedImage);
+			}
+		}
+
+	}
+}
+
+projects.display();
+
+
+
 
 //Education Information
 var education = {
 	"schools" : [
 		{
 			"name" : "Ball State University",
-			"location" : "Muncie, IN, US",
+			"location" : "Muncie, IN, USA",
 			"degree" : "Transferred",
 			"date"	: "May 2010",
 			"major" : ["Biochemistry, Premedicine"]
 		},
 		{
 			"name" : "Indiana University",
-			"location" : "Bloomington, IN, US",
+			"location" : "Bloomington, IN, USA",
 			"degree" : "BS",
 			"date" : "May 2012",
 			"major" : ["Neuroscience"]
 		},
 		{
 			"name" : "Fowler School of Law at Chapman University",
-			"location" : "Orange, CA, US",
+			"location" : "Orange, CA, USA",
 			"degree" : "JD",
 			"date" : "May 2015",
 			"major" : ["Law", " Advocacy and Dispute Resolution"]
@@ -155,7 +202,7 @@ var education = {
 			"title" : "Intro to JavaScript",
 			"school" : "Udacity",
 			"date" : "1/19/2015",
-			"url" : "text"
+			"url" : "https://www.udacity.com/verified-certificate/ud304"
 		}
 	]
 }
@@ -205,53 +252,6 @@ education.display = function() {
 
 education.display();
 
-
-
-
-//Project information
-var projects = {
-	"projects" : [
-		{
-			"title" : "Web-Development Portfolio",
-			"date" 	: "December 2014",
-			"description" : "Built self portfolio to learn web development skills",
-			"images" : 0
-		},
-		{
-			"title" : "Phone to Telescope Mount",
-			"date" : "January 2014",
-			"description" : "Made a mount to use phone as camera and screen to look through telescope lens",
-			"images" : 0
-
-		}
-	]
-}
-
-projects.display = function() {
-	$("#projects").append(HTMLprojectStart); 
-	//HTMLprojectStart creates an element with the class "project-entry" so we can grab this class and append info to
-	for (project in projects.projects){
-		
-		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-		$(".project-entry:last").append(formattedTitle);
-
-		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].date);
-		$(".project-entry:last").append(formattedDates);
-
-		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-		$(".project-entry:last").append(formattedDescription);
-
-		if (projects.projects[project].images.length > 0) {
-			for (image in projects.projects[project].images) {
-				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-				$(".project-entry:last").append(formattedImage);
-			}
-		}
-
-	}
-}
-
-projects.display();
 
 
 $("#mapDiv").append(googleMap);
